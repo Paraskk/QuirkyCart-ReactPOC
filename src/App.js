@@ -140,17 +140,29 @@ class App extends React.Component {
       })
       return count;
     }
+    getCartTotal=()=>{
+      const {products}=this.state;
+      let count=0;
+      products.forEach((product)=>{
+        count+=(product.price * product.qty);
+      })
+      return count;
+
+    }
   render(){  
     const {products}=this.state;
   return (
     <div className="App">
       <NavBar count={this.getCartCount()}/>
+      {/* Notice we are not passing function to this component just the value
+      The key to workings of this lie in the react component lifecylce */}
       <Cart
         products={products} 
         onIncreaseQuantity={this.increaseQuantity}
         onDecreaseQuantity={this.decreaseQuantity}
         onDeleteProduct={this.handleDeleteProduct}
       />
+      <div style={{fontSize:25,marginLeft: 10}}>TOTAL: {this.getCartTotal()}</div>
     </div>
   );
   }

@@ -1,12 +1,11 @@
 import React from 'react';
-class CartItem extends React.Component {
-  constructor(){
-    super(); 
-  }
- 
-  render (){
-    const {price,title,qty,img}=this.props.product;// object destructuring
-    const {product,onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct}=this.props;
+// if we nottice carefully now even CartItem doesnot have its owm state so it can also 
+// be changed into fxnal component
+// a fxnal component does not have access to this keyword
+const CartItem=(props)=>{
+
+    const {price,title,qty,img}=props.product;// object destructuring
+    const {product,onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct}=props;
     return(
       <div className="cart-item">
         <div className="left-block">
@@ -24,7 +23,7 @@ class CartItem extends React.Component {
         </div>
       </div>
     );
-  }
+  
 }
  const styles={
   image:{
@@ -35,6 +34,54 @@ class CartItem extends React.Component {
   }
 }
 export default CartItem;
+
+
+
+
+
+// class CartItem extends React.Component {
+//   constructor(){
+//     super(); 
+//   }
+//   render (){
+//     const {price,title,qty,img}=this.props.product;// object destructuring
+//     const {product,onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct}=this.props;
+//     return(
+//       <div className="cart-item">
+//         <div className="left-block">
+//         <img style={styles.image} src ={img}/>
+//         </div>
+//         <div className="right-block">
+//           <div style={{fontSize:25}}>{title}</div>
+//           <div color={{color:'#777'}}>{price}</div>
+//           <div color={{color:'#900'}}>QTY:{qty}</div>
+//           <div className="cart-item-actions">
+//             <img onClick={()=>onIncreaseQuantity(product)} alt="increase" className="action-icons" src="https://image.flaticon.com/icons/svg/992/992651.svg" />
+//             <img onClick={()=>onDecreaseQuantity(product)} alt="decrease" className="action-icons" src="https://image.flaticon.com/icons/svg/1665/1665612.svg" />
+//             <img onClick={()=>onDeleteProduct(product.id)} alt="delete" className="action-icons" src="https://image.flaticon.com/icons/svg/1214/1214428.svg" />
+//           </div>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+//  const styles={
+//   image:{
+//     height: 110,
+//     width: 110,
+//     borderRadius: 4 ,
+//     background:'#ccc'
+//   }
+// }
+// export default CartItem;
+
+
+
+
+
+
+
+
 
 
 

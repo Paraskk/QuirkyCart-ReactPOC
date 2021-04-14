@@ -142,9 +142,15 @@ class App extends React.Component {
     }
     getCartTotal=()=>{
       const {products}=this.state;
-      let count=0;
-      products.forEach((product)=>{
-        count+=(product.price * product.qty);
+        let count=0;
+      // products.forEach((product)=>{
+      //   count+=(product.price * product.qty);
+      // })
+      // return count;
+      products.map(product=>{
+        if(product.qty>0){
+          count+=(product.qty*product.price)
+        }
       })
       return count;
 
